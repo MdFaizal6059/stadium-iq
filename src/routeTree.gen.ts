@@ -9,38 +9,275 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TransportRouteImport } from './routes/transport'
+import { Route as StatusRouteImport } from './routes/status'
+import { Route as SettingsRouteImport } from './routes/settings'
+import { Route as ReportsRouteImport } from './routes/reports'
+import { Route as OperationsRouteImport } from './routes/operations'
+import { Route as MapsRouteImport } from './routes/maps'
+import { Route as FanRouteImport } from './routes/fan'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as CrowdRouteImport } from './routes/crowd'
+import { Route as CommandRouteImport } from './routes/command'
+import { Route as AccessibilityRouteImport } from './routes/accessibility'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiHealthRouteImport } from './routes/api/health'
 
+const TransportRoute = TransportRouteImport.update({
+  id: '/transport',
+  path: '/transport',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StatusRoute = StatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OperationsRoute = OperationsRouteImport.update({
+  id: '/operations',
+  path: '/operations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MapsRoute = MapsRouteImport.update({
+  id: '/maps',
+  path: '/maps',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FanRoute = FanRouteImport.update({
+  id: '/fan',
+  path: '/fan',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CrowdRoute = CrowdRouteImport.update({
+  id: '/crowd',
+  path: '/crowd',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CommandRoute = CommandRouteImport.update({
+  id: '/command',
+  path: '/command',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccessibilityRoute = AccessibilityRouteImport.update({
+  id: '/accessibility',
+  path: '/accessibility',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiHealthRoute = ApiHealthRouteImport.update({
+  id: '/api/health',
+  path: '/api/health',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/command': typeof CommandRoute
+  '/crowd': typeof CrowdRoute
+  '/dashboard': typeof DashboardRoute
+  '/fan': typeof FanRoute
+  '/maps': typeof MapsRoute
+  '/operations': typeof OperationsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/status': typeof StatusRoute
+  '/transport': typeof TransportRoute
+  '/api/health': typeof ApiHealthRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/command': typeof CommandRoute
+  '/crowd': typeof CrowdRoute
+  '/dashboard': typeof DashboardRoute
+  '/fan': typeof FanRoute
+  '/maps': typeof MapsRoute
+  '/operations': typeof OperationsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/status': typeof StatusRoute
+  '/transport': typeof TransportRoute
+  '/api/health': typeof ApiHealthRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/accessibility': typeof AccessibilityRoute
+  '/command': typeof CommandRoute
+  '/crowd': typeof CrowdRoute
+  '/dashboard': typeof DashboardRoute
+  '/fan': typeof FanRoute
+  '/maps': typeof MapsRoute
+  '/operations': typeof OperationsRoute
+  '/reports': typeof ReportsRoute
+  '/settings': typeof SettingsRoute
+  '/status': typeof StatusRoute
+  '/transport': typeof TransportRoute
+  '/api/health': typeof ApiHealthRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/accessibility'
+    | '/command'
+    | '/crowd'
+    | '/dashboard'
+    | '/fan'
+    | '/maps'
+    | '/operations'
+    | '/reports'
+    | '/settings'
+    | '/status'
+    | '/transport'
+    | '/api/health'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/accessibility'
+    | '/command'
+    | '/crowd'
+    | '/dashboard'
+    | '/fan'
+    | '/maps'
+    | '/operations'
+    | '/reports'
+    | '/settings'
+    | '/status'
+    | '/transport'
+    | '/api/health'
+  id:
+    | '__root__'
+    | '/'
+    | '/accessibility'
+    | '/command'
+    | '/crowd'
+    | '/dashboard'
+    | '/fan'
+    | '/maps'
+    | '/operations'
+    | '/reports'
+    | '/settings'
+    | '/status'
+    | '/transport'
+    | '/api/health'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AccessibilityRoute: typeof AccessibilityRoute
+  CommandRoute: typeof CommandRoute
+  CrowdRoute: typeof CrowdRoute
+  DashboardRoute: typeof DashboardRoute
+  FanRoute: typeof FanRoute
+  MapsRoute: typeof MapsRoute
+  OperationsRoute: typeof OperationsRoute
+  ReportsRoute: typeof ReportsRoute
+  SettingsRoute: typeof SettingsRoute
+  StatusRoute: typeof StatusRoute
+  TransportRoute: typeof TransportRoute
+  ApiHealthRoute: typeof ApiHealthRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/transport': {
+      id: '/transport'
+      path: '/transport'
+      fullPath: '/transport'
+      preLoaderRoute: typeof TransportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/status': {
+      id: '/status'
+      path: '/status'
+      fullPath: '/status'
+      preLoaderRoute: typeof StatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/operations': {
+      id: '/operations'
+      path: '/operations'
+      fullPath: '/operations'
+      preLoaderRoute: typeof OperationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/maps': {
+      id: '/maps'
+      path: '/maps'
+      fullPath: '/maps'
+      preLoaderRoute: typeof MapsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/fan': {
+      id: '/fan'
+      path: '/fan'
+      fullPath: '/fan'
+      preLoaderRoute: typeof FanRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crowd': {
+      id: '/crowd'
+      path: '/crowd'
+      fullPath: '/crowd'
+      preLoaderRoute: typeof CrowdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/command': {
+      id: '/command'
+      path: '/command'
+      fullPath: '/command'
+      preLoaderRoute: typeof CommandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accessibility': {
+      id: '/accessibility'
+      path: '/accessibility'
+      fullPath: '/accessibility'
+      preLoaderRoute: typeof AccessibilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +285,30 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/health': {
+      id: '/api/health'
+      path: '/api/health'
+      fullPath: '/api/health'
+      preLoaderRoute: typeof ApiHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AccessibilityRoute: AccessibilityRoute,
+  CommandRoute: CommandRoute,
+  CrowdRoute: CrowdRoute,
+  DashboardRoute: DashboardRoute,
+  FanRoute: FanRoute,
+  MapsRoute: MapsRoute,
+  OperationsRoute: OperationsRoute,
+  ReportsRoute: ReportsRoute,
+  SettingsRoute: SettingsRoute,
+  StatusRoute: StatusRoute,
+  TransportRoute: TransportRoute,
+  ApiHealthRoute: ApiHealthRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
