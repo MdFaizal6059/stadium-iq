@@ -7,6 +7,7 @@ import { DecisionCard } from "@/components/decision-card";
 import { AgentTraceList } from "@/components/agent-trace";
 import { SectionHeading } from "@/components/section-heading";
 import { runDecision, type DecisionResult } from "@/lib/decision.functions";
+import { HOST_STADIUMS } from "@/lib/stadiums";
 import { Sparkles, Send, Loader2 } from "lucide-react";
 
 export const Route = createFileRoute("/command")({
@@ -42,7 +43,7 @@ const PRESETS = [
 function CommandPage() {
   const [query, setQuery] = useState(PRESETS[0]);
   const [persona, setPersona] = useState<(typeof PERSONAS)[number]["id"]>("operations");
-  const [venue, setVenue] = useState("Stadium 78, Group Stage Match");
+  const [venue, setVenue] = useState(`${HOST_STADIUMS[7].name}, ${HOST_STADIUMS[7].city}`);
   const runDecisionFn = useServerFn(runDecision);
 
   const mutation = useMutation({
@@ -102,12 +103,22 @@ function CommandPage() {
               <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground" htmlFor="venue">
                 Venue context
               </label>
-              <input
+              <select
                 id="venue"
                 value={venue}
                 onChange={(e) => setVenue(e.target.value)}
                 className="w-full rounded-xl border border-border/70 bg-background/60 px-3 py-2 text-sm outline-none ring-primary/30 focus:ring-2"
-              />
+              >
+                {(["USA", "Canada", "Mexico"] as const).map((c) => (
+                  <optgroup key={c} label={c}>
+                    {HOST_STADIUMS.filter((s) => s.country === c).map((s) => (
+                      <option key={s.id} value={`${s.name}, ${s.city}`}>
+                        {s.name} — {s.city}
+                      </option>
+                    ))}
+                  </optgroup>
+                ))}
+              </select>
             </div>
           </div>
 
