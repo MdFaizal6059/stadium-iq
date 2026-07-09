@@ -3,9 +3,30 @@ import { render, screen } from "@testing-library/react";
 import { AgentTraceList } from "./agent-trace";
 
 const agents = [
-  { id: "a", name: "Coordinator", role: "Routes intent", status: "ok" as const, latencyMs: 120, notes: "Routed ok" },
-  { id: "b", name: "Crowd", role: "Density", status: "error" as const, latencyMs: 210, notes: "Signal degraded" },
-  { id: "c", name: "Reporting", role: "Brief", status: "skipped" as const, latencyMs: 40, notes: "Not needed" },
+  {
+    id: "a",
+    name: "Coordinator",
+    role: "Routes intent",
+    status: "ok" as const,
+    latencyMs: 120,
+    notes: "Routed ok",
+  },
+  {
+    id: "b",
+    name: "Crowd",
+    role: "Density",
+    status: "error" as const,
+    latencyMs: 210,
+    notes: "Signal degraded",
+  },
+  {
+    id: "c",
+    name: "Reporting",
+    role: "Brief",
+    status: "skipped" as const,
+    latencyMs: 40,
+    notes: "Not needed",
+  },
 ];
 
 describe("AgentTraceList", () => {

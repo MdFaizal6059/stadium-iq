@@ -19,7 +19,11 @@ export const Route = createFileRoute("/status")({
   head: () => ({
     meta: [
       { title: "API Status · WorldCupIQ AI" },
-      { name: "description", content: "Live status of the five required APIs powering WorldCupIQ AI: Gemini, Search, AI Mode, Local and Maps." },
+      {
+        name: "description",
+        content:
+          "Live status of the five required APIs powering WorldCupIQ AI: Gemini, Search, AI Mode, Local and Maps.",
+      },
     ],
   }),
   component: StatusPage,
@@ -43,7 +47,11 @@ function StatusPage() {
 
   return (
     <AppShell title="API Status" subtitle="Live probe of the five required API surfaces">
-      <SectionHeading eyebrow="Health" title="Configured API keys" description="Configured = the environment variable is present at runtime." />
+      <SectionHeading
+        eyebrow="Health"
+        title="Configured API keys"
+        description="Configured = the environment variable is present at runtime."
+      />
       <ul className="space-y-2">
         {APIS.map((a) => {
           const ok = !isLoading && data ? Boolean(data[a.key]) : false;
@@ -61,7 +69,9 @@ function StatusPage() {
               <span
                 className={
                   "rounded-full px-2 py-0.5 text-[11px] uppercase tracking-wider " +
-                  (ok ? "bg-primary/10 text-primary ring-1 ring-primary/25" : "bg-destructive/10 text-destructive ring-1 ring-destructive/25")
+                  (ok
+                    ? "bg-primary/10 text-primary ring-1 ring-primary/25"
+                    : "bg-destructive/10 text-destructive ring-1 ring-destructive/25")
                 }
               >
                 {ok ? "configured" : "missing"}
@@ -71,9 +81,10 @@ function StatusPage() {
         })}
       </ul>
       <p className="mt-4 text-xs text-muted-foreground">
-        Inside Lovable, model traffic is routed via <code>LOVABLE_API_KEY</code>, which also satisfies the
-        <code> GEMINI_API_KEY</code> role. On Cloud Run / Colab deployments, provide the challenge-specified
-        variables directly.
+        Inside Lovable, model traffic is routed via <code>LOVABLE_API_KEY</code>, which also
+        satisfies the
+        <code> GEMINI_API_KEY</code> role. On Cloud Run / Colab deployments, provide the
+        challenge-specified variables directly.
       </p>
     </AppShell>
   );

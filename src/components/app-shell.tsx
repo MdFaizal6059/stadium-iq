@@ -29,7 +29,12 @@ const NAV: Array<{ to: string; label: string; icon: typeof LayoutDashboard; grou
   { to: "/settings", label: "Settings", icon: Settings2, group: "Insights" },
 ];
 
-export function AppShell({ children, title, subtitle, actions }: {
+export function AppShell({
+  children,
+  title,
+  subtitle,
+  actions,
+}: {
   children: ReactNode;
   title: string;
   subtitle?: string;
@@ -76,7 +81,10 @@ export function AppShell({ children, title, subtitle, actions }: {
                               : "text-muted-foreground hover:bg-sidebar-accent hover:text-foreground")
                           }
                         >
-                          <Icon className={"h-4 w-4 " + (active ? "text-primary" : "")} aria-hidden />
+                          <Icon
+                            className={"h-4 w-4 " + (active ? "text-primary" : "")}
+                            aria-hidden
+                          />
                           <span>{n.label}</span>
                         </Link>
                       </li>
@@ -89,7 +97,10 @@ export function AppShell({ children, title, subtitle, actions }: {
 
           <div className="border-t border-border/60 px-4 py-3 text-[11px] text-muted-foreground">
             <div className="flex items-center gap-2">
-              <span className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary" aria-hidden />
+              <span
+                className="inline-block h-1.5 w-1.5 animate-pulse rounded-full bg-primary"
+                aria-hidden
+              />
               Live signal • FIFA WC 2026 build
             </div>
           </div>
@@ -99,7 +110,9 @@ export function AppShell({ children, title, subtitle, actions }: {
           <header className="sticky top-0 z-20 border-b border-border/60 bg-background/70 backdrop-blur-md">
             <div className="flex flex-wrap items-center gap-3 px-5 py-4 md:px-8">
               <div className="min-w-0">
-                <h1 className="font-display text-lg font-semibold tracking-tight md:text-xl">{title}</h1>
+                <h1 className="font-display text-lg font-semibold tracking-tight md:text-xl">
+                  {title}
+                </h1>
                 {subtitle ? (
                   <p className="text-xs text-muted-foreground md:text-sm">{subtitle}</p>
                 ) : null}

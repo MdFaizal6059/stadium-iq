@@ -78,17 +78,43 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "WorldCupIQ AI — Stadium Decision Intelligence for FIFA World Cup 2026" },
-      { name: "description", content: "The Stadium Decision Intelligence Operating System for FIFA World Cup 2026: multi-agent GenAI turns crowd, transport, accessibility and venue signals into actionable decisions." },
+      {
+        name: "description",
+        content:
+          "The Stadium Decision Intelligence Operating System for FIFA World Cup 2026: multi-agent GenAI turns crowd, transport, accessibility and venue signals into actionable decisions.",
+      },
       { name: "author", content: "WorldCupIQ AI" },
       { name: "theme-color", content: "#0e2b22" },
-      { property: "og:title", content: "WorldCupIQ AI — Stadium Decision Intelligence for FIFA World Cup 2026" },
-      { property: "og:description", content: "The Stadium Decision Intelligence Operating System for FIFA World Cup 2026: multi-agent GenAI turns crowd, transport, accessibility and venue signals into actionable decisions." },
+      {
+        property: "og:title",
+        content: "WorldCupIQ AI — Stadium Decision Intelligence for FIFA World Cup 2026",
+      },
+      {
+        property: "og:description",
+        content:
+          "The Stadium Decision Intelligence Operating System for FIFA World Cup 2026: multi-agent GenAI turns crowd, transport, accessibility and venue signals into actionable decisions.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "WorldCupIQ AI — Stadium Decision Intelligence for FIFA World Cup 2026" },
-      { name: "twitter:description", content: "The Stadium Decision Intelligence Operating System for FIFA World Cup 2026: multi-agent GenAI turns crowd, transport, accessibility and venue signals into actionable decisions." },
-      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03dd9ecf-5032-4a8b-b58d-0abbfb8c4bf4" },
-      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03dd9ecf-5032-4a8b-b58d-0abbfb8c4bf4" },
+      {
+        name: "twitter:title",
+        content: "WorldCupIQ AI — Stadium Decision Intelligence for FIFA World Cup 2026",
+      },
+      {
+        name: "twitter:description",
+        content:
+          "The Stadium Decision Intelligence Operating System for FIFA World Cup 2026: multi-agent GenAI turns crowd, transport, accessibility and venue signals into actionable decisions.",
+      },
+      {
+        property: "og:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03dd9ecf-5032-4a8b-b58d-0abbfb8c4bf4",
+      },
+      {
+        name: "twitter:image",
+        content:
+          "https://storage.googleapis.com/gpt-engineer-file-uploads/attachments/og-images/03dd9ecf-5032-4a8b-b58d-0abbfb8c4bf4",
+      },
     ],
     links: [
       {

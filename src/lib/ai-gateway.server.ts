@@ -25,11 +25,11 @@ export type GatewayMessage = {
  *  3. Anyone can inspect the list via `ALLOWED_GEMINI_MODELS`.
  */
 export const ALLOWED_GEMINI_MODELS = [
-  "google/gemini-3.5-flash",         // latest Flash
-  "google/gemini-3-flash-preview",   // Flash preview
-  "google/gemini-3.1-flash-lite",    // latest Flash-Lite
-  "google/gemini-2.5-flash",         // stable Flash
-  "google/gemini-2.5-flash-lite",    // stable Flash-Lite
+  "google/gemini-3.5-flash", // latest Flash
+  "google/gemini-3-flash-preview", // Flash preview
+  "google/gemini-3.1-flash-lite", // latest Flash-Lite
+  "google/gemini-2.5-flash", // stable Flash
+  "google/gemini-2.5-flash-lite", // stable Flash-Lite
 ] as const;
 
 export type AllowedGeminiModel = (typeof ALLOWED_GEMINI_MODELS)[number];
@@ -53,11 +53,7 @@ export function assertAllowedGeminiModel(id: string): AllowedGeminiModel {
 export function getGatewayKey(): string {
   // Prefer the Lovable-managed key in the hosted preview; fall back to the
   // challenge-required GEMINI_API_KEY when self-hosted.
-  return (
-    process.env.LOVABLE_API_KEY ||
-    process.env.GEMINI_API_KEY ||
-    ""
-  );
+  return process.env.LOVABLE_API_KEY || process.env.GEMINI_API_KEY || "";
 }
 
 export function apiKeyStatus() {
@@ -107,9 +103,7 @@ export async function callGateway(opts: {
 
   // Build failover chain: requested model first (if provided), then
   // the rest of the allowlist in preference order — deduplicated.
-  const preferred = opts.model
-    ? assertAllowedGeminiModel(opts.model)
-    : DEFAULT_GEMINI_MODEL;
+  const preferred = opts.model ? assertAllowedGeminiModel(opts.model) : DEFAULT_GEMINI_MODEL;
   const chain: AllowedGeminiModel[] = [
     preferred,
     ...ALLOWED_GEMINI_MODELS.filter((m) => m !== preferred),
@@ -130,18 +124,15 @@ export async function callGateway(opts: {
     if (opts.json) body.response_format = { type: "json_object" };
 
     try {
-      const res = await fetch(
-        "https://ai.gateway.lovable.dev/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Lovable-API-Key": key,
-            "X-Lovable-AIG-SDK": "worldcupiq-fetch",
-          },
-          body: JSON.stringify(body),
+      const res = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Lovable-API-Key": key,
+          "X-Lovable-AIG-SDK": "worldcupiq-fetch",
         },
-      );
+        body: JSON.stringify(body),
+      });
 
       // 429 (rate limit) and 5xx (upstream) are the only retryable statuses.
       if (res.status === 429 || res.status >= 500) {

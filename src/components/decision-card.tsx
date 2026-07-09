@@ -27,14 +27,22 @@ export function DecisionCard({ result }: { result: DecisionResult }) {
       </header>
 
       <div className="mt-5 grid gap-4 lg:grid-cols-3">
-        <section aria-labelledby="risks-h" className="rounded-xl border border-border/60 bg-card/40 p-4">
+        <section
+          aria-labelledby="risks-h"
+          className="rounded-xl border border-border/60 bg-card/40 p-4"
+        >
           <h3 id="risks-h" className="mb-2 flex items-center gap-1.5 text-sm font-semibold">
             <AlertTriangle className="h-4 w-4 text-[color:var(--gold)]" aria-hidden /> Risks
           </h3>
           <ul className="space-y-2 text-sm">
             {result.risks.map((r, i) => (
               <li key={i} className="flex items-start gap-2">
-                <span className={"mt-0.5 rounded px-1.5 py-0.5 text-[10px] uppercase " + (severityTone[r.severity] ?? "")}>
+                <span
+                  className={
+                    "mt-0.5 rounded px-1.5 py-0.5 text-[10px] uppercase " +
+                    (severityTone[r.severity] ?? "")
+                  }
+                >
                   {r.severity}
                 </span>
                 <div>
@@ -46,7 +54,10 @@ export function DecisionCard({ result }: { result: DecisionResult }) {
           </ul>
         </section>
 
-        <section aria-labelledby="pred-h" className="rounded-xl border border-border/60 bg-card/40 p-4">
+        <section
+          aria-labelledby="pred-h"
+          className="rounded-xl border border-border/60 bg-card/40 p-4"
+        >
           <h3 id="pred-h" className="mb-2 flex items-center gap-1.5 text-sm font-semibold">
             <LineChart className="h-4 w-4 text-primary" aria-hidden /> Predictions
           </h3>
@@ -65,7 +76,10 @@ export function DecisionCard({ result }: { result: DecisionResult }) {
           </ul>
         </section>
 
-        <section aria-labelledby="opts-h" className="rounded-xl border border-border/60 bg-card/40 p-4">
+        <section
+          aria-labelledby="opts-h"
+          className="rounded-xl border border-border/60 bg-card/40 p-4"
+        >
           <h3 id="opts-h" className="mb-2 flex items-center gap-1.5 text-sm font-semibold">
             <Compass className="h-4 w-4 text-[color:var(--gold)]" aria-hidden /> Options
           </h3>
@@ -85,16 +99,26 @@ export function DecisionCard({ result }: { result: DecisionResult }) {
         className="mt-5 rounded-2xl border border-primary/30 p-5"
         style={{ background: "color-mix(in oklch, var(--primary) 10%, transparent)" }}
       >
-        <h3 id="rec-h" className="mb-2 flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-primary">
+        <h3
+          id="rec-h"
+          className="mb-2 flex items-center gap-1.5 text-sm font-semibold uppercase tracking-wider text-primary"
+        >
           <Target className="h-4 w-4" aria-hidden /> Recommended action
         </h3>
         <p className="font-display text-lg font-semibold tracking-tight md:text-xl">
           {result.recommendation.action}
         </p>
         <div className="mt-2 grid gap-2 text-xs text-muted-foreground md:grid-cols-3">
-          <div><span className="text-foreground">Owner:</span> {result.recommendation.owner}</div>
-          <div><span className="text-foreground">Deadline:</span> {result.recommendation.deadline}</div>
-          <div><span className="text-foreground">Confidence:</span> {Math.round(result.confidence * 100)}%</div>
+          <div>
+            <span className="text-foreground">Owner:</span> {result.recommendation.owner}
+          </div>
+          <div>
+            <span className="text-foreground">Deadline:</span> {result.recommendation.deadline}
+          </div>
+          <div>
+            <span className="text-foreground">Confidence:</span>{" "}
+            {Math.round(result.confidence * 100)}%
+          </div>
         </div>
         <p className="mt-2 text-sm">{result.recommendation.rationale}</p>
       </section>
@@ -109,7 +133,9 @@ export function DecisionCard({ result }: { result: DecisionResult }) {
         <span className="font-medium text-foreground">Sources:</span>
         {result.sources.map((s, i) => (
           <span key={i} className="rounded-full bg-muted px-2 py-0.5 ring-1 ring-border">
-            <span className="uppercase text-[10px] tracking-wider text-muted-foreground/80">{s.kind}</span>
+            <span className="uppercase text-[10px] tracking-wider text-muted-foreground/80">
+              {s.kind}
+            </span>
             <span className="ml-1 text-foreground">{s.label}</span>
           </span>
         ))}
@@ -126,7 +152,9 @@ export function DecisionCard({ result }: { result: DecisionResult }) {
 function Impact({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl border border-border/60 bg-card/40 p-3">
-      <div className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">{label}</div>
+      <div className="text-[11px] font-medium uppercase tracking-wider text-muted-foreground">
+        {label}
+      </div>
       <div className="text-sm">{value}</div>
     </div>
   );
