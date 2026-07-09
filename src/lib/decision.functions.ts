@@ -6,11 +6,28 @@ export type { DecisionResult, AgentTrace };
 
 const PERSONAS = ["fan", "volunteer", "staff", "operations", "accessibility"] as const;
 
+/**
+ * Strict Gemini allowlist — kept in sync with `ALLOWED_GEMINI_MODELS`
+ * in ai-gateway.server.ts. Duplicated here so it can be validated at the
+ * server-function input boundary without importing server-only code
+ * into the client bundle.
+ */
+export const ALLOWED_MODELS = [
+  "google/gemini-3.5-flash",
+  "google/gemini-3-flash-preview",
+  "google/gemini-3.1-flash-lite",
+  "google/gemini-2.5-flash",
+  "google/gemini-2.5-flash-lite",
+] as const;
+
+export type AllowedModel = (typeof ALLOWED_MODELS)[number];
+
 export const DecisionInput = z.object({
   query: z.string().min(3).max(1200),
   persona: z.enum(PERSONAS).default("operations"),
   venue: z.string().max(120).optional(),
   language: z.string().max(20).optional(),
+  model: z.enum(ALLOWED_MODELS).optional(),
 });
 
 export type DecisionInputT = z.infer<typeof DecisionInput>;
@@ -29,7 +46,8 @@ export const runDecision = createServerFn({ method: "POST" })
     const agents = simulateAgents(data.query, data.persona);
     const started = Date.now();
     try {
-      const { text } = await callGateway({
+      const { text, model: usedModel } = await callGateway({
+        model: data.model,
         system: SYSTEM_PROMPT,
         messages: [
           {
@@ -84,6 +102,7 @@ export const runDecision = createServerFn({ method: "POST" })
         agents: scaled,
         generatedAt: new Date().toISOString(),
         keys: apiKeyStatus(),
+        model: usedModel,
       };
     } catch (err) {
       console.error("[decision] gateway error", err);
@@ -92,6 +111,13 @@ export const runDecision = createServerFn({ method: "POST" })
   });
 
 export const getApiStatus = createServerFn({ method: "GET" }).handler(async () => {
-  const { apiKeyStatus } = await import("./ai-gateway.server");
-  return { ...apiKeyStatus(), generatedAt: new Date().toISOString() };
+  const { apiKeyStatus, ALLOWED_GEMINI_MODELS, DEFAULT_GEMINI_MODEL } = await import(
+    "./ai-gateway.server"
+  );
+  return {
+    ...apiKeyStatus(),
+    allowedModels: [...ALLOWED_GEMINI_MODELS],
+    defaultModel: DEFAULT_GEMINI_MODEL,
+    generatedAt: new Date().toISOString(),
+  };
 });
