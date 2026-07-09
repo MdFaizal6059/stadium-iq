@@ -66,7 +66,10 @@ function CommandPage() {
             mutation.mutate({ query, persona, venue });
           }}
         >
-          <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground" htmlFor="q">
+          <label
+            className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground"
+            htmlFor="q"
+          >
             Decision request
           </label>
           <textarea
@@ -80,7 +83,9 @@ function CommandPage() {
 
           <div className="mt-4 grid gap-3 md:grid-cols-2">
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">Persona</label>
+              <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground">
+                Persona
+              </label>
               <div className="flex flex-wrap gap-1.5">
                 {PERSONAS.map((p) => (
                   <button
@@ -100,7 +105,10 @@ function CommandPage() {
               </div>
             </div>
             <div>
-              <label className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground" htmlFor="venue">
+              <label
+                className="mb-1 block text-xs font-medium uppercase tracking-wider text-muted-foreground"
+                htmlFor="venue"
+              >
                 Venue context
               </label>
               <select
@@ -139,12 +147,15 @@ function CommandPage() {
               )}
             </button>
             <span className="text-xs text-muted-foreground">
-              <Send className="mr-1 inline h-3 w-3" aria-hidden /> Grounded reasoning · confidence-scored
+              <Send className="mr-1 inline h-3 w-3" aria-hidden /> Grounded reasoning ·
+              confidence-scored
             </span>
           </div>
 
           <div className="mt-4">
-            <div className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">Presets</div>
+            <div className="mb-1 text-xs font-medium uppercase tracking-wider text-muted-foreground">
+              Presets
+            </div>
             <div className="flex flex-wrap gap-1.5">
               {PRESETS.map((p) => (
                 <button

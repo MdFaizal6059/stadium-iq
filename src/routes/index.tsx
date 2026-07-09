@@ -74,11 +74,22 @@ function Landing() {
             <div className="text-[11px] text-muted-foreground">Stadium Decision OS</div>
           </div>
         </Link>
-        <nav className="hidden items-center gap-6 text-sm text-muted-foreground md:flex" aria-label="Primary">
-          <a href="#pillars" className="hover:text-foreground">Platform</a>
-          <a href="#agents" className="hover:text-foreground">Agents</a>
-          <a href="#modules" className="hover:text-foreground">Modules</a>
-          <a href="#stack" className="hover:text-foreground">Stack</a>
+        <nav
+          className="hidden items-center gap-6 text-sm text-muted-foreground md:flex"
+          aria-label="Primary"
+        >
+          <a href="#pillars" className="hover:text-foreground">
+            Platform
+          </a>
+          <a href="#agents" className="hover:text-foreground">
+            Agents
+          </a>
+          <a href="#modules" className="hover:text-foreground">
+            Modules
+          </a>
+          <a href="#stack" className="hover:text-foreground">
+            Stack
+          </a>
         </nav>
         <Link
           to="/dashboard"
@@ -90,17 +101,18 @@ function Landing() {
 
       <section className="relative z-10 mx-auto max-w-7xl px-6 pt-10 pb-16 md:pt-16 md:pb-24">
         <div className="mb-4 inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary/10 px-3 py-1 text-[11px] font-medium uppercase tracking-widest text-primary">
-          <Sparkles className="h-3 w-3" aria-hidden /> FIFA World Cup 2026 · Decision Intelligence OS
+          <Sparkles className="h-3 w-3" aria-hidden /> FIFA World Cup 2026 · Decision Intelligence
+          OS
         </div>
         <h1 className="font-display text-4xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
           The <span className="gradient-text">Stadium Decision</span>
           <br /> Intelligence OS for World Cup 2026.
         </h1>
         <p className="mt-5 max-w-2xl text-base text-muted-foreground md:text-lg">
-          WorldCupIQ AI turns crowd, transportation, accessibility, venue and tournament signals into
-          real-time <span className="text-foreground">actionable decisions</span> — with situation
-          awareness, predicted outcomes, ranked options and a confidence score. Built for organizers,
-          operations, volunteers, staff and fans.
+          WorldCupIQ AI turns crowd, transportation, accessibility, venue and tournament signals
+          into real-time <span className="text-foreground">actionable decisions</span> — with
+          situation awareness, predicted outcomes, ranked options and a confidence score. Built for
+          organizers, operations, volunteers, staff and fans.
         </p>
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <Link
@@ -130,8 +142,12 @@ function Landing() {
 
       <section id="agents" className="relative z-10 mx-auto max-w-7xl px-6 pb-16">
         <div className="mb-6">
-          <div className="text-[11px] font-medium uppercase tracking-widest text-primary">Agent roster</div>
-          <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">A coordinator over 8 specialist agents</h2>
+          <div className="text-[11px] font-medium uppercase tracking-widest text-primary">
+            Agent roster
+          </div>
+          <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+            A coordinator over 8 specialist agents
+          </h2>
         </div>
         <div className="grid gap-3 sm:grid-cols-2 md:grid-cols-4">
           {AGENTS.map((a) => (
@@ -171,7 +187,10 @@ function Landing() {
               "Emergency Support Center",
               "Sustainability Intelligence",
             ].map((m) => (
-              <li key={m} className="rounded-lg border border-border/60 bg-background/40 px-3 py-2 text-sm">
+              <li
+                key={m}
+                className="rounded-lg border border-border/60 bg-background/40 px-3 py-2 text-sm"
+              >
                 {m}
               </li>
             ))}
@@ -181,8 +200,12 @@ function Landing() {
 
       <section id="stack" className="relative z-10 mx-auto max-w-7xl px-6 pb-24">
         <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
-          <div className="text-[11px] font-medium uppercase tracking-widest text-primary">Under the hood</div>
-          <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">Purpose-built for the challenge.</h2>
+          <div className="text-[11px] font-medium uppercase tracking-widest text-primary">
+            Under the hood
+          </div>
+          <h2 className="font-display text-2xl font-semibold tracking-tight md:text-3xl">
+            Purpose-built for the challenge.
+          </h2>
           <div className="mt-4 grid gap-4 md:grid-cols-4">
             {[
               { k: "GEMINI_API_KEY", v: "Reasoning, coordination, decisions" },
@@ -195,7 +218,9 @@ function Landing() {
               { k: "Responsible AI", v: "Sources · confidence · limitations" },
             ].map((s) => (
               <div key={s.k} className="rounded-xl border border-border/60 bg-background/30 p-3">
-                <div className="text-[11px] font-mono uppercase tracking-wider text-primary">{s.k}</div>
+                <div className="text-[11px] font-mono uppercase tracking-wider text-primary">
+                  {s.k}
+                </div>
                 <div className="text-sm">{s.v}</div>
               </div>
             ))}
@@ -207,8 +232,12 @@ function Landing() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-4 px-6 py-6 text-xs text-muted-foreground">
           <div>© 2026 WorldCupIQ AI · Built for the FIFA World Cup 2026 challenge.</div>
           <div className="flex items-center gap-4">
-            <Link to="/status" className="hover:text-foreground">API Status</Link>
-            <Link to="/settings" className="hover:text-foreground">Settings</Link>
+            <Link to="/status" className="hover:text-foreground">
+              API Status
+            </Link>
+            <Link to="/settings" className="hover:text-foreground">
+              Settings
+            </Link>
           </div>
         </div>
       </footer>

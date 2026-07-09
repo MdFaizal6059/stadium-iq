@@ -12,12 +12,7 @@ export default defineConfig({
       provider: "v8",
       reporter: ["text", "html", "json-summary"],
       include: ["src/lib/**/*.ts", "src/components/**/*.tsx"],
-      exclude: [
-        "src/**/*.server.ts",
-        "src/**/*.functions.ts",
-        "src/**/*.test.*",
-        "src/test/**",
-      ],
+      exclude: ["src/**/*.server.ts", "src/**/*.functions.ts", "src/**/*.test.*", "src/test/**"],
     },
   },
 });

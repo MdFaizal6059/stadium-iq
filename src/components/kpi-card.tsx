@@ -22,10 +22,10 @@ export function KpiCard({
     tone === "good"
       ? "text-primary"
       : tone === "warn"
-      ? "text-[color:var(--gold)]"
-      : tone === "bad"
-      ? "text-destructive"
-      : "text-muted-foreground";
+        ? "text-[color:var(--gold)]"
+        : tone === "bad"
+          ? "text-destructive"
+          : "text-muted-foreground";
   return (
     <div className={cn("glass rounded-2xl p-4 shadow-sm", className)}>
       <div className="flex items-start justify-between gap-2">

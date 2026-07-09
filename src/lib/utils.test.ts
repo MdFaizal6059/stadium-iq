@@ -6,7 +6,8 @@ describe("cn", () => {
     expect(cn("a", "b")).toBe("a b");
   });
   it("skips falsy values", () => {
-    expect(cn("a", false && "b", null, undefined, "c")).toBe("a c");
+    const includeB = false;
+    expect(cn("a", includeB && "b", null, undefined, "c")).toBe("a c");
   });
   it("dedupes conflicting tailwind classes via twMerge", () => {
     expect(cn("p-2", "p-4")).toBe("p-4");

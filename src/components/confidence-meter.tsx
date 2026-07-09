@@ -16,7 +16,10 @@ export function ConfidenceMeter({ value }: { value: number }) {
       >
         <div
           className="h-full rounded-full transition-[width] duration-500"
-          style={{ width: `${pct}%`, background: `linear-gradient(90deg, ${tone}, color-mix(in oklch, ${tone} 60%, white))` }}
+          style={{
+            width: `${pct}%`,
+            background: `linear-gradient(90deg, ${tone}, color-mix(in oklch, ${tone} 60%, white))`,
+          }}
         />
       </div>
     </div>

@@ -72,19 +72,71 @@ function DashboardPage() {
       }
     >
       <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-4">
-        <KpiCard label="Fans on venue campus" value="72,418" delta="+2.1% vs plan" tone="good" icon={<Users2 className="h-4 w-4" />} />
-        <KpiCard label="Avg. gate wait" value="4m 12s" delta="-38s vs baseline" tone="good" icon={<Radar className="h-4 w-4" />} />
-        <KpiCard label="Transit on-time" value="94.3%" delta="metro line 3 delay" tone="warn" icon={<TramFront className="h-4 w-4" />} />
-        <KpiCard label="Accessible route uptime" value="100%" hint="all 12 corridors clear" tone="good" icon={<Accessibility className="h-4 w-4" />} />
-        <KpiCard label="Active incidents" value="3" delta="1 escalated" tone="warn" icon={<ShieldAlert className="h-4 w-4" />} />
-        <KpiCard label="Risk index" value="0.28" hint="0 = calm · 1 = severe" tone="good" icon={<TrendingUp className="h-4 w-4" />} />
-        <KpiCard label="Emissions today" value="12.4 tCO₂e" delta="-6.8% vs baseline" tone="good" icon={<Leaf className="h-4 w-4" />} />
-        <KpiCard label="Agent decisions / hr" value="284" delta="12 escalated" tone="default" icon={<Activity className="h-4 w-4" />} />
+        <KpiCard
+          label="Fans on venue campus"
+          value="72,418"
+          delta="+2.1% vs plan"
+          tone="good"
+          icon={<Users2 className="h-4 w-4" />}
+        />
+        <KpiCard
+          label="Avg. gate wait"
+          value="4m 12s"
+          delta="-38s vs baseline"
+          tone="good"
+          icon={<Radar className="h-4 w-4" />}
+        />
+        <KpiCard
+          label="Transit on-time"
+          value="94.3%"
+          delta="metro line 3 delay"
+          tone="warn"
+          icon={<TramFront className="h-4 w-4" />}
+        />
+        <KpiCard
+          label="Accessible route uptime"
+          value="100%"
+          hint="all 12 corridors clear"
+          tone="good"
+          icon={<Accessibility className="h-4 w-4" />}
+        />
+        <KpiCard
+          label="Active incidents"
+          value="3"
+          delta="1 escalated"
+          tone="warn"
+          icon={<ShieldAlert className="h-4 w-4" />}
+        />
+        <KpiCard
+          label="Risk index"
+          value="0.28"
+          hint="0 = calm · 1 = severe"
+          tone="good"
+          icon={<TrendingUp className="h-4 w-4" />}
+        />
+        <KpiCard
+          label="Emissions today"
+          value="12.4 tCO₂e"
+          delta="-6.8% vs baseline"
+          tone="good"
+          icon={<Leaf className="h-4 w-4" />}
+        />
+        <KpiCard
+          label="Agent decisions / hr"
+          value="284"
+          delta="12 escalated"
+          tone="default"
+          icon={<Activity className="h-4 w-4" />}
+        />
       </div>
 
       <div className="mt-6 grid gap-4 lg:grid-cols-3">
         <div className="glass col-span-2 rounded-2xl p-5">
-          <SectionHeading eyebrow="Crowd" title="Gate & transit flow — last 24 hours" description="Projected footfall vs realized transit boardings." />
+          <SectionHeading
+            eyebrow="Crowd"
+            title="Gate & transit flow — last 24 hours"
+            description="Projected footfall vs realized transit boardings."
+          />
           <div className="h-64">
             <ResponsiveContainer>
               <AreaChart data={flow} margin={{ left: -10, right: 10 }}>
@@ -109,8 +161,20 @@ function DashboardPage() {
                     color: "var(--popover-foreground)",
                   }}
                 />
-                <Area type="monotone" dataKey="gate" stroke="var(--primary)" fill="url(#g1)" strokeWidth={2} />
-                <Area type="monotone" dataKey="transit" stroke="var(--gold)" fill="url(#g2)" strokeWidth={2} />
+                <Area
+                  type="monotone"
+                  dataKey="gate"
+                  stroke="var(--primary)"
+                  fill="url(#g1)"
+                  strokeWidth={2}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="transit"
+                  stroke="var(--gold)"
+                  fill="url(#g2)"
+                  strokeWidth={2}
+                />
               </AreaChart>
             </ResponsiveContainer>
           </div>
@@ -120,11 +184,18 @@ function DashboardPage() {
           <SectionHeading eyebrow="Alerts" title="Live risk feed" />
           <ul className="space-y-2">
             {alerts.map((a, i) => (
-              <li key={i} className="flex items-start gap-3 rounded-lg border border-border/60 bg-card/40 p-3">
+              <li
+                key={i}
+                className="flex items-start gap-3 rounded-lg border border-border/60 bg-card/40 p-3"
+              >
                 <span
                   className={
                     "mt-0.5 h-2 w-2 shrink-0 rounded-full " +
-                    (a.level === "high" ? "bg-destructive" : a.level === "medium" ? "bg-[color:var(--gold)]" : "bg-primary")
+                    (a.level === "high"
+                      ? "bg-destructive"
+                      : a.level === "medium"
+                        ? "bg-[color:var(--gold)]"
+                        : "bg-primary")
                   }
                 />
                 <div className="min-w-0 flex-1 text-sm">
@@ -164,15 +235,23 @@ function DashboardPage() {
           <SectionHeading eyebrow="Executive brief" title="Now → Next 60 min" />
           <ul className="space-y-3 text-sm">
             <li className="rounded-lg border border-primary/25 bg-primary/8 p-3">
-              <div className="text-[11px] uppercase tracking-wider text-primary">Recommended action</div>
-              <div className="font-medium">Deploy +2 stewards to Gate E cluster within 10 minutes.</div>
+              <div className="text-[11px] uppercase tracking-wider text-primary">
+                Recommended action
+              </div>
+              <div className="font-medium">
+                Deploy +2 stewards to Gate E cluster within 10 minutes.
+              </div>
             </li>
             <li className="rounded-lg border border-border/60 bg-card/40 p-3">
-              <div className="text-[11px] uppercase tracking-wider text-muted-foreground">Predicted</div>
+              <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                Predicted
+              </div>
               <div>Metro line 3 delay likely to resolve in 12 min (P=0.72).</div>
             </li>
             <li className="rounded-lg border border-border/60 bg-card/40 p-3">
-              <div className="text-[11px] uppercase tracking-wider text-muted-foreground">Risk posture</div>
+              <div className="text-[11px] uppercase tracking-wider text-muted-foreground">
+                Risk posture
+              </div>
               <div>Overall low. One medium risk pocket at Gate E.</div>
             </li>
           </ul>

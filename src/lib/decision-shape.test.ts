@@ -10,9 +10,7 @@ describe("DecisionInput schema", () => {
     expect(() => DecisionInput.parse({ query: "hi" })).toThrow();
   });
   it("rejects unknown personas", () => {
-    expect(() =>
-      DecisionInput.parse({ query: "valid query text", persona: "hacker" }),
-    ).toThrow();
+    expect(() => DecisionInput.parse({ query: "valid query text", persona: "hacker" })).toThrow();
   });
   it("rejects models outside the Gemini allowlist", () => {
     expect(() =>

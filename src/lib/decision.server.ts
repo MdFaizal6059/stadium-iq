@@ -19,7 +19,10 @@ export type DecisionResult = {
   impact: { fans: string; operations: string; sustainability: string };
   confidence: number;
   dataQuality: string;
-  sources: Array<{ label: string; kind: "rag" | "search" | "aimode" | "local" | "maps" | "context" }>;
+  sources: Array<{
+    label: string;
+    kind: "rag" | "search" | "aimode" | "local" | "maps" | "context";
+  }>;
   agents: AgentTrace[];
   generatedAt: string;
   keys: ReturnType<typeof apiKeyStatus>;
@@ -128,15 +131,30 @@ export function fallbackDecision(query: string, persona: string): DecisionResult
     situation:
       "AI Gateway did not return a structured decision. Serving a conservative baseline built from the operational rulebook so the shift is never left without a next step.",
     risks: [
-      { label: "Reduced situational awareness", severity: "medium", note: "Live signal fusion is unavailable; rely on manual observation." },
-      { label: "Slower escalation", severity: "low", note: "Route incidents through the standard duty manager on-call tree." },
+      {
+        label: "Reduced situational awareness",
+        severity: "medium",
+        note: "Live signal fusion is unavailable; rely on manual observation.",
+      },
+      {
+        label: "Slower escalation",
+        severity: "low",
+        note: "Route incidents through the standard duty manager on-call tree.",
+      },
     ],
     predictions: [
-      { horizon: "next 30 min", outcome: "Steady state maintained if crowd density stays below baseline.", probability: 0.6 },
+      {
+        horizon: "next 30 min",
+        outcome: "Steady state maintained if crowd density stays below baseline.",
+        probability: 0.6,
+      },
     ],
     options: [
       { title: "Hold current posture", tradeoffs: "Low risk, no improvement." },
-      { title: "Increase visible stewarding at gate cluster", tradeoffs: "Mild cost, better flow, higher fan confidence." },
+      {
+        title: "Increase visible stewarding at gate cluster",
+        tradeoffs: "Mild cost, better flow, higher fan confidence.",
+      },
     ],
     recommendation: {
       action: "Add two stewards at the highest-throughput gate and revisit in 15 minutes.",

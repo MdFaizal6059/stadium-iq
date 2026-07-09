@@ -20,9 +20,7 @@ export function SectionHeading({
           </div>
         ) : null}
         <h2 className="font-display text-lg font-semibold tracking-tight md:text-xl">{title}</h2>
-        {description ? (
-          <p className="text-sm text-muted-foreground">{description}</p>
-        ) : null}
+        {description ? <p className="text-sm text-muted-foreground">{description}</p> : null}
       </div>
       {actions ? <div className="flex items-center gap-2">{actions}</div> : null}
     </div>

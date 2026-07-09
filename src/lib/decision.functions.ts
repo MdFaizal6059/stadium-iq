@@ -35,12 +35,8 @@ export type DecisionInputT = z.infer<typeof DecisionInput>;
 export const runDecision = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => DecisionInput.parse(data))
   .handler(async ({ data }): Promise<DecisionResult> => {
-    const {
-      simulateAgents,
-      fallbackDecision,
-      SYSTEM_PROMPT,
-      personaPrompt,
-    } = await import("./decision.server");
+    const { simulateAgents, fallbackDecision, SYSTEM_PROMPT, personaPrompt } =
+      await import("./decision.server");
     const { callGateway, extractJson, apiKeyStatus } = await import("./ai-gateway.server");
 
     const agents = simulateAgents(data.query, data.persona);
@@ -111,9 +107,8 @@ export const runDecision = createServerFn({ method: "POST" })
   });
 
 export const getApiStatus = createServerFn({ method: "GET" }).handler(async () => {
-  const { apiKeyStatus, ALLOWED_GEMINI_MODELS, DEFAULT_GEMINI_MODEL } = await import(
-    "./ai-gateway.server"
-  );
+  const { apiKeyStatus, ALLOWED_GEMINI_MODELS, DEFAULT_GEMINI_MODEL } =
+    await import("./ai-gateway.server");
   return {
     ...apiKeyStatus(),
     allowedModels: [...ALLOWED_GEMINI_MODELS],
