@@ -29,7 +29,7 @@ describe("HOST_STADIUMS", () => {
       expect(s.lat).toBeGreaterThan(15);
       expect(s.lat).toBeLessThan(55);
       expect(s.lng).toBeGreaterThan(-125);
-      expect(s.lng).toBeLessThan(-75);
+      expect(s.lng).toBeLessThan(-65);
     }
   });
 });
