@@ -1,0 +1,6 @@
+# WorldCupIQ AI — Python requirements
+# Only used for the optional Colab evaluation notebook (see docs/colab_guide.md).
+# The application itself is a TypeScript / TanStack Start service and does not
+# depend on any Python packages.
+
+requests>=2.31
