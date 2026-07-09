@@ -148,8 +148,23 @@ and `/status` for a live probe of the five required APIs.
 
 ## 9. Testing
 
-See [`docs/testing.md`](docs/testing.md) for the layered test plan:
-type check, build, smoke, decision path, accessibility, security.
+WorldCupIQ AI ships with an automated Vitest + React Testing Library suite
+that runs on every push via GitHub Actions (`.github/workflows/ci.yml`).
+
+```bash
+bun run test            # run the full unit suite
+bun run test:watch      # watch mode
+bun run test:coverage   # V8 coverage report
+```
+
+The suite covers the 16 FIFA 2026 host stadium dataset, the decision RPC
+input schema (including the strict Gemini model allowlist), the `cn`
+utility, and the presentational components (`ConfidenceMeter`,
+`SectionHeading`, `AgentTraceList`) — including ARIA `progressbar`
+semantics.
+
+See [`docs/testing.md`](docs/testing.md) for the full layered plan and
+[`docs/testing_report.md`](docs/testing_report.md) for a per-file snapshot.
 
 ## 10. Assumptions
 
