@@ -13,6 +13,7 @@ Every user interaction returns the same seven-part decision object:
 
 ---
 
+**Click this link to view the web app:** https://worldcupiq-ops-vision.lovable.app/
 ## 1. Challenge alignment
 
 The FIFA World Cup 2026 GenAI challenge asks builders to enhance stadium
