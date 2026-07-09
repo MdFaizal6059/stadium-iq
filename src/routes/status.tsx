@@ -6,6 +6,15 @@ import { SectionHeading } from "@/components/section-heading";
 import { CheckCircle2, XCircle } from "lucide-react";
 import { getApiStatus } from "@/lib/decision.functions";
 
+type ApiStatus = {
+  gemini: boolean;
+  search: boolean;
+  aimode: boolean;
+  local: boolean;
+  maps: boolean;
+  generatedAt: string;
+};
+
 export const Route = createFileRoute("/status")({
   head: () => ({
     meta: [
@@ -16,7 +25,7 @@ export const Route = createFileRoute("/status")({
   component: StatusPage,
 });
 
-const APIS: Array<{ key: keyof Awaited<ReturnType<typeof getApiStatus>>; env: string; role: string }> = [
+const APIS: Array<{ key: keyof ApiStatus; env: string; role: string }> = [
   { key: "gemini", env: "GEMINI_API_KEY", role: "Reasoning · agent coordination · decisions" },
   { key: "search", env: "SEARCH_API_KEY", role: "Real-time event intelligence" },
   { key: "aimode", env: "AIMODE_API_KEY", role: "Deep information retrieval" },
@@ -26,9 +35,9 @@ const APIS: Array<{ key: keyof Awaited<ReturnType<typeof getApiStatus>>; env: st
 
 function StatusPage() {
   const getStatus = useServerFn(getApiStatus);
-  const { data, isLoading } = useQuery({
+  const { data, isLoading } = useQuery<ApiStatus>({
     queryKey: ["api-status"],
-    queryFn: () => getStatus() as unknown as Promise<Awaited<ReturnType<typeof getApiStatus>>>,
+    queryFn: () => getStatus() as unknown as Promise<ApiStatus>,
     refetchInterval: 15_000,
   });
 
@@ -37,7 +46,7 @@ function StatusPage() {
       <SectionHeading eyebrow="Health" title="Configured API keys" description="Configured = the environment variable is present at runtime." />
       <ul className="space-y-2">
         {APIS.map((a) => {
-          const ok = !isLoading && data ? Boolean((data as Record<string, unknown>)[a.key]) : false;
+          const ok = !isLoading && data ? Boolean(data[a.key]) : false;
           return (
             <li key={a.env} className="glass flex flex-wrap items-center gap-3 rounded-xl p-4">
               {ok ? (
