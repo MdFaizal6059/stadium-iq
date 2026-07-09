@@ -1,17 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { apiKeyStatus } from "@/lib/ai-gateway.server";
 
 export const Route = createFileRoute("/api/health")({
   server: {
     handlers: {
-      GET: async () =>
-        Response.json({
+      GET: async () => {
+        const { apiKeyStatus } = await import("@/lib/ai-gateway.server");
+        return Response.json({
           service: "worldcupiq-ai",
           version: "1.0.0",
           status: "ok",
           apis: apiKeyStatus(),
           generatedAt: new Date().toISOString(),
-        }),
+        });
+      },
     },
   },
 });
