@@ -23,6 +23,8 @@ export type DecisionResult = {
   agents: AgentTrace[];
   generatedAt: string;
   keys: ReturnType<typeof apiKeyStatus>;
+  /** Which Gemini model actually served the call (undefined when the fallback path was used). */
+  model?: string;
 };
 
 export const AGENT_ROSTER: Array<Omit<AgentTrace, "status" | "latencyMs" | "notes">> = [
